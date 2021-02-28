@@ -11,7 +11,7 @@ Summary: >
 
   Then, the routine iteratively finds the next structure that has no structure 
   Contained within it, (and is, by definition the leaf structure), and parses it,
-  replacing it with an object token of the form ‘@Objectxxx‘, or ‘@arrayxxx‘, 
+  replacing it with an object token of the form â€˜@Objectxxxâ€˜, or â€˜@arrayxxxâ€˜, 
   where xxx is the object id assigned to it. The values, or name/value pairs 
   are retrieved from the string table and stored in the hierarchy table. G
   radually, the JSON document is eaten until there is just a single root
@@ -223,7 +223,7 @@ Returns: >
 	        --HR Engineering notation bugfix end 
 		  SELECT  @end=PATINDEX('%[A-Za-z0-9@+.e][^A-Za-z0-9@+.e]%', @contents+' ' collate SQL_Latin1_General_CP850_Bin) + 1
 	       SELECT
-	        @start=PATINDEX('%[^A-Za-z0-9@+.e][A-Za-z0-9@+.e]%', ' '+@contents collate SQL_Latin1_General_CP850_Bin)
+	        @start=PATINDEX('%[^A-Za-z0-9@+.e][A-Za-z0-9@+.e][\-]%', ' '+@contents collate SQL_Latin1_General_CP850_Bin)
 	      --select @start,@end, LEN(@contents+'|'), @contents  
 	      SELECT
 	        @Value=RTRIM(SUBSTRING(@contents, @start, @End-@Start)),
